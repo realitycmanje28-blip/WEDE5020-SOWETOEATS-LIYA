@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Soweto Eats | Contact &amp; Track Order - Soweto Delivery Support</title>
+	<meta name="description" content="Contact Soweto Eats for order tracking, complaints and support. Fast response for Soweto &amp; JHB South delivery. Email info@sowetoeats.co.za">
+	<meta name="keywords" content="Soweto Eats contact, track order Soweto, food delivery support JHB South">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+	<header>
+		<h1>🍲 Soweto Eats</h1>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="about.html">About</a>
+			<a href="services.html">Restaurants</a>
+			<a href="contact.html">Contact</a>
+			<a href="enquiry.html">Order</a>
+		</nav>
+	</header>
+
+	<main>
+		<h2>Contact Us - Track Your Order</h2>
+		<p><b>Email:</b> info@sowetoeats.co.za | <b>Phone:</b> 011 123 4567 | <b>Location:</b> Soweto, Johannesburg</p>
+
+		<h3>Our Delivery Areas - Live Map</h3>
+		<div id="map" style="height:320px; width:100%; border:3px solid #FF6B35; border-radius:8px; margin-bottom:20px;"></div>
+
+		<h3>Send us a Message</h3>
+		<form id="contactForm">
+			<label for="cname">Full Name:</label><br>
+			<input type="text" id="cname" required pattern="[A-Za-z ]{3,}" placeholder="Your Name - e.g Liyabona"><br><br>
+
+			<label for="cemail">Email:</label><br>
+			<input type="email" id="cemail" required placeholder="Your Email - e.g liya@gmail.com"><br><br>
+
+			<label for="msgType">Type of Message:</label><br>
+			<select id="msgType" required>
+				<option value="">-- Select Type --</option>
+				<option>Track My Order</option>
+				<option>Complaint - Late Delivery</option>
+				<option>General Enquiry</option>
+				<option>Donation</option>
+			</select><br><br>
+
+			<label for="fullMsg">Full Message (min 10 characters):</label><br>
+			<textarea id="fullMsg" required minlength="10" placeholder="Type order number e.g Order #1234 and your message"></textarea><br><br>
+
+			<button class="order-btn" type="submit">Send Email</button>
+		</form>
+		<p id="error" style="color:red; font-weight:bold;" role="alert"></p>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 Soweto Eats | ST10464029 - Liyabona</p>
+	</footer>
+
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script>
+		// Map for Soweto Eats - Soweto & JHB South
+		var map = L.map('map').setView([-26.2678, 27.8585], 11);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '© OpenStreetMap'
+		}).addTo(map);
+		L.marker([-26.2678, 27.8585]).addTo(map).bindPopup('<b>Soweto Eats Hub</b><br>Soweto').openPopup();
+		L.marker([-26.2041, 28.0473]).addTo(map).bindPopup('<b>Delivery Zone</b><br>JHB South - Under 45min');
+
+		// Form validation and mailto compilation
+		document.getElementById('contactForm').addEventListener('submit', function (e) {
+			e.preventDefault();
+			const name = document.getElementById('cname').value.trim();
+			const email = document.getElementById('cemail').value.trim();
+			const message = document.getElementById('fullMsg').value.trim();
+
+			if (message.length < 10) {
+				document.getElementById('error').innerText = 'Error: Message must be at least 10 characters';
+				return;
+			}
+
+			document.getElementById('error').innerText = '';
+			const subject = document.getElementById('msgType').value;
+			const body = `Name: ${name}\nEmail: ${email}\n\nMessage Type: ${subject}\n\nMessage: ${message}\n\nSoweto Eats - Delivery under 45min`;
+			window.location.href = `mailto:info@sowetoeats.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		});
+	</script>
+</body>
+</html>
