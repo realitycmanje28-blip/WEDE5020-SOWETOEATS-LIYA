@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>About Us - Soweto Eats</title>
+	<title>Soweto Eats | About Us - Our Story &amp; Mission</title>
+	<meta name="description" content="Learn about Soweto Eats mission to digitize township food vendors. Founded in Soweto to support local kota and braai businesses.">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<header>
@@ -19,19 +21,35 @@
 	</header>
 	<main>
 		<h2>About Soweto Eats</h2>
-		<p>We connect you to the best local food spots in Soweto.</p>
-		<p><strong>Mission:</strong> Support local. Eat local. Grow local.</p>
-		<h3>Why We Exist</h3>
-		<p>Soweto Eats was created to make it easy for everyone to find authentic township food.</p>
-		<h3>What We Celebrate</h3>
-		<ul>
-			<li>Local township cuisine</li>
-			<li>Small business owners</li>
-			<li>Community spirit</li>
-		</ul>
+		<p>Soweto Eats was founded in 2024 to help township food vendors in Soweto sell online. We noticed kota shops, braai stands had no delivery. Now we deliver under 45min with bikes.</p>
+		<p><b>Mission:</b> Support local, create jobs, deliver flavour fast.</p>
+
+		<h2>FAQ - Accordion</h2>
+		<div class="accordion">
+			<button class="acc-btn">How long is delivery? ▼</button>
+			<div class="acc-content" style="display:none;">
+				<p>Under 45 minutes in Soweto &amp; JHB South. We use local bike drivers.</p>
+			</div>
+			<button class="acc-btn">What areas do you cover? ▼</button>
+			<div class="acc-content" style="display:none;">
+				<p>All Soweto: Phefeni, Dube, Vilakazi, Orlando &amp; JHB South: Mondeor, Southgate.</p>
+			</div>
+			<button class="acc-btn">How to become a vendor? ▼</button>
+			<div class="acc-content" style="display:none;">
+				<p>Go to Partner With Us page, fill form, we approve within 48 hours.</p>
+			</div>
+		</div>
 	</main>
 	<footer>
-		<p>&copy; 2025 Soweto Eats</p>
+		<p>&copy; 2025 Soweto Eats | ST10464029</p>
 	</footer>
+	<script>
+		// Accordion using jQuery slideToggle - Part 3 Requirement
+		$(document).ready(function(){
+			$(".acc-btn").click(function(){
+				$(this).next(".acc-content").slideToggle(300);
+			});
+		});
+	</script>
 </body>
 </html>
