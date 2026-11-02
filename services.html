@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Soweto Eats | Restaurants - Browse 200+ Kota &amp; Braai Vendors</title>
+	<meta name="description" content="Browse 200+ Soweto restaurants. Filter by kota, braai, bunny chow. Order township food online with fast delivery.">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header>
+		<h1>🍲 Soweto Eats</h1>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="about.html">About</a>
+			<a href="services.html">Restaurants</a>
+			<a href="contact.html">Contact</a>
+			<a href="enquiry.html">Order</a>
+		</nav>
+	</header>
+	<main>
+		<h2>Our Restaurants - Soweto &amp; JHB South</h2>
+		<input type="text" id="search" placeholder="Search kota, braai, bunny chow..." style="width:100%; padding:10px; margin-bottom:20px; border:2px solid #FF6B35;">
+
+		<div class="services-grid" id="restaurantGrid">
+			<div class="service-card" data-name="kota mama phefeni">
+				<img src="images/kota-full-phefeni.jpg" alt="Kota from Phefeni Soweto">
+				<h3>Mama's Kota Phefeni</h3>
+				<p>Type: Kota | R45 | 4.8 stars</p>
+				<button class="order-btn">Order Now</button>
+			</div>
+			<div class="service-card" data-name="braai shisanyama vilakazi">
+				<img src="images/braai-shisanyama-vilakazi.jpg" alt="Braai shisanyama Vilakazi">
+				<h3>Vilakazi Braai Hub</h3>
+				<p>Type: Braai | R120 platter | 4.9 stars</p>
+				<button class="order-btn">Order Now</button>
+			</div>
+			<div class="service-card" data-name="bunny chow dube curry">
+				<img src="images/bunny-chow-dube.jpg" alt="Bunny chow curry Dube">
+				<h3>Bunny Chow Dube</h3>
+				<p>Type: Bunny Chow | R65 | 4.7 stars</p>
+				<button class="order-btn">Order Now</button>
+			</div>
+			<div class="service-card" data-name="kota dube kota junction">
+				<img src="images/kota-full-phefeni.jpg" alt="Kota junction Dube">
+				<h3>Kota Junction Dube</h3>
+				<p>Type: Kota | R50 | 4.6 stars</p>
+				<button class="order-btn">Order Now</button>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p>&copy; 2025 Soweto Eats | ST10464029</p>
+	</footer>
+	<script>
+		// Dynamic Search Filter - Part 3 Requirement
+		document.getElementById('search').addEventListener('keyup', function(){
+			let filter = this.value.toLowerCase();
+			let cards = document.querySelectorAll('.service-card');
+			cards.forEach(function(card){
+				let name = card.getAttribute('data-name');
+				if(name.includes(filter)){
+					card.style.display = "";
+				} else {
+					card.style.display = "none";
+				}
+			});
+		});
+	</script>
+</body>
+</html>
