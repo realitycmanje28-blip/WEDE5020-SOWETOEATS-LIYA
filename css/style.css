@@ -89,3 +89,7 @@ input:focus, textarea:focus, select:focus { border: 2px solid #FF6B35; outline: 
 /* Animations for Part 3 */
 @keyframes fadeIn { from {opacity:0} to {opacity:1} }
 .fade-in { animation: fadeIn 1s ease-in; }
+a:hover { color: #FF6B35; }
+.order-btn:hover { background-color: #FF6B35; transform: scale(1.05); }
+input:focus, textarea:focus, select:focus { border-color: #2BAE66; box-shadow: 0 0 5px #2BAE66; }
+.service-card:nth-child(even) { background-color: #FFF8F0; }
