@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Soweto Eats | Partner With Us - Join as Restaurant Vendor</title>
+	<meta name="description" content="Join Soweto Eats as a restaurant partner. Earn more from Soweto &amp; JHB South deliveries. Low commission, delivery bikes provided. Apply now.">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header>
+		<h1>🍲 Soweto Eats</h1>
+		<nav>
+			<a href="index.html">Home</a>
+			<a href="about.html">About</a>
+			<a href="services.html">Restaurants</a>
+			<a href="contact.html">Contact</a>
+			<a href="enquiry.html">Order</a>
+		</nav>
+	</header>
+	<main>
+		<h2>Partner With Us - Join Soweto Eats</h2>
+		<p>Do you sell kota, braai, shisanyama in Soweto? Join 200+ vendors. We deliver in under 45min.</p>
+
+		<form id="partnerForm">
+			<label for="restName">Restaurant Name:</label><br>
+			<input type="text" id="restName" required pattern="[A-Za-z0-9 ]{3,}" placeholder="e.g Mama's Kota Phefeni"><br><br>
+
+			<label for="ownerEmail">Owner Email:</label><br>
+			<input type="email" id="ownerEmail" required placeholder="owner@email.com"><br><br>
+
+			<label for="phone">Phone (10 digits):</label><br>
+			<input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="e.g 0812345678"><br><br>
+
+			<label for="cuisine">Cuisine Type:</label><br>
+			<select id="cuisine" required>
+				<option value="">-- Select Cuisine --</option>
+				<option value="Kota">Kota</option>
+				<option value="Braai">Braai / Shisanyama</option>
+				<option value="Bunny Chow">Bunny Chow</option>
+				<option value="Other">Other Township Food</option>
+			</select><br><br>
+
+			<label for="aboutRest">Tell us about your restaurant (min 20 chars):</label><br>
+			<textarea id="aboutRest" required minlength="20" placeholder="How long have you been selling? What is your best seller?"></textarea><br><br>
+
+			<button class="order-btn" type="submit">Apply to Partner</button>
+		</form>
+
+		<div id="partnerResponse" style="margin-top:20px; padding:15px; border:2px solid #2BAE66; background:#FFF8F0; display:none;" role="status" aria-live="polite"></div>
+		<p id="error2" style="color:red; font-weight:bold;" role="alert"></p>
+	</main>
+	<footer>
+		<p>&copy; 2025 Soweto Eats | ST10464029</p>
+	</footer>
+	<script>
+		document.getElementById('partnerForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+			const about = document.getElementById('aboutRest').value;
+			const error = document.getElementById('error2');
+
+			if (about.length < 20) {
+				error.textContent = 'Please write at least 20 characters about your restaurant';
+				return;
+			}
+
+			error.textContent = '';
+			const cuisine = document.getElementById('cuisine').value;
+			const restName = document.getElementById('restName').value;
+			const ownerEmail = document.getElementById('ownerEmail').value;
+			const cost = cuisine === 'Kota' ? 'R500 once-off setup fee' : cuisine === 'Braai' ? 'R750 once-off (includes photoshoot)' : 'R600 once-off setup fee';
+			const availability = 'Status: APPROVED within 48 hours. You can start receiving orders in Soweto & JHB South immediately.';
+			const box = document.getElementById('partnerResponse');
+
+			box.replaceChildren();
+			const heading = document.createElement('h3');
+			heading.textContent = 'Thank you ' + restName + '!';
+			box.appendChild(heading);
+
+			const details = document.createElement('p');
+			const costLabel = document.createElement('strong');
+			costLabel.textContent = 'Cost: ';
+			details.append(costLabel, document.createTextNode(cost));
+			details.appendChild(document.createElement('br'));
+			const availabilityLabel = document.createElement('strong');
+			availabilityLabel.textContent = 'Availability: ';
+			details.append(availabilityLabel, document.createTextNode(availability));
+			details.appendChild(document.createElement('br'));
+			const commission = document.createElement('strong');
+			commission.textContent = 'Commission: 15% per order. We provide delivery bikes.';
+			details.appendChild(commission);
+			details.appendChild(document.createElement('br'));
+			details.appendChild(document.createElement('br'));
+			details.appendChild(document.createTextNode('We will email you at ' + ownerEmail));
+			box.appendChild(details);
+			box.style.display = 'block';
+		});
+	</script>
+</body>
+</html>
